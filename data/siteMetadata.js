@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'SwiftUI || Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'SwiftUi',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: 'swiftui.uz',
+  author: 'ShoxruxC',
+  headerTitle: 'SwiftUI',
+  description: 'Swift va SwiftUI o\'rganib iOS Engineer bo\'ling !!',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
@@ -15,13 +15,13 @@ const siteMetadata = {
   github: 'https://github.com',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
+  //facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
+  //threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
-  medium: 'https://medium.com',
-  bluesky: 'https://bsky.app/',
+  //medium: 'https://medium.com',
+  //bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
