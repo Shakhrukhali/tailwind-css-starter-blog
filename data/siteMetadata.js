@@ -1,17 +1,17 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'swiftui.uz',
+  title: 'Swift | SwiftUI',
   author: 'ShoxruxC',
-  headerTitle: 'SwiftUI',
+  headerTitle: 'Dr.SwiftUI',
   description: 'Swift va SwiftUI o\'rganib iOS Engineer bo\'ling !!',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://swiftui.uz',
+  //siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
-  mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
+ // mastodon: 'https://mastodon.social/@mastodonuser',
+  //email: 'address@yoursite.com',
   github: 'https://github.com',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
