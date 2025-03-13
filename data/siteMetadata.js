@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Swift | SwiftUI',
+  title: 'Dr.SwiftUI',
   author: 'ShoxruxC',
   headerTitle: 'Dr.SwiftUI',
   description: 'Swift va SwiftUI o\'rganib iOS Engineer bo\'ling !!',
