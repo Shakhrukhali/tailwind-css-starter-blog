@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Dr.SwiftUI',
   author: 'ShoxruxC',
   headerTitle: 'Dr.SwiftUI',
-  description: 'Swift va SwiftUI o\'rganib iOS Engineer bo\'ling !',
+  description: 'yangi qo\'shilgan maqolalar',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://swiftui.uz',
