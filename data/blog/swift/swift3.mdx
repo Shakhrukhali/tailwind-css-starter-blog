@@ -1,0 +1,116 @@
+---
+title: Swiftda asosiy turlar (Bool, String, Int) | Swift asoslari
+date: "2025-03-14"
+tags: ['swift']
+draft: false
+summary: "Har qanday dastur ma’lumotlar bilan ishlaydi va bu ma’lumotlar ma’lum bir turga ega bo‘ladi. Bugun quyidagi asosiy turlar bilan tanishamiz"
+---
+
+🎉 O‘tgan darsimizda loyihani sozlash, sharh yozish va "camel case" uslubini o‘rgandik. Endi esa Swift dasturlash tilidagi ma’lumot turlarini o‘rganamiz.
+
+### 🛠 Ma’lumotlar turlari nima?
+
+✅ **String** (matn)  
+✅ **Boolean** (rost/yolg‘on)  
+✅ **Date** (sanalar)  
+✅ **Numbers** (raqamlar)  
+
+Agar ilgari kod yozmagan bo‘lsangiz, bular siz uchun yangi tushuncha bo‘lishi mumkin. Lekin bu juda muhim!
+
+> 📌 Misol: Agar siz Microsoft Word yoki Excel ishlatgan bo‘lsangiz, matn yoki sonlarni turli formatlarda saqlash mumkinligini bilasiz. Dasturlashda ham shunga o‘xshash tartib bor.
+
+### 🖥 Swift Playground
+
+O‘tgan darsda Swift Playgrounddan foydalanishni ko‘rib chiqdik. Agar siz ham kod yozmoqchi bo‘lsangiz:
+
+1️⃣ Xcodeni oching.  
+2️⃣ Navigator oynasida o‘ng tugmani bosing va yangi Playground sahifasi yarating.  
+3️⃣ Bo‘sh Swift faylini yaratib, kod yozishga tayyor bo‘ling!  
+
+### 📌 String (Matn)
+
+**String** – oddiy matn. Uni qo‘shtirnoq ichida yozamiz:
+
+```swift
+let myFirstItem: String = "Hello world"
+```
+
+_Turi aniq yozish (`: String`) ixtiyoriy, lekin yangi o‘rganayotganda foydali._
+
+📝 **E’tibor bering:**  
+✔️ String har doim qo‘shtirnoq ichida bo‘lishi kerak.  
+✔️ Agar qo‘shtirnoq ishlatilmasa, kompilyator xato beradi.  
+✔️ Kod yozayotganda, matn to‘q sariq rangda ko‘rinadi – bu uning String ekanligini bildiradi.  
+
+### ✅ Boolean (rost/yolg‘on)
+
+**Boolean** – faqat ikkita qiymatni qabul qiladi:
+
+```swift
+let isSwiftAwesome: Bool = true
+let isBugFree: Bool = false
+```
+
+📌 **Noto‘g‘ri foydalanish:**
+
+```swift
+let myItem: String = "true"  // ❌ Xato!
+```
+
+✔️ Bool faqat `true` yoki `false` bo‘lishi kerak.  
+✔️ Boolean o‘zgaruvchilari odatda shartli operatorlar (`if`, `while`) bilan ishlatiladi.  
+
+### ⚠️ Swift va tur xavfsizligi
+
+Swiftda tur xavfsizligi juda kuchli! Agar noto‘g‘ri turdagi qiymat berilsa, xatolik yuzaga keladi:
+
+```swift
+let myItem: Bool = "Hello world"  // ❌ Xato!
+let anotherItem: String = true    // ❌ Xato!
+```
+
+✅ Agar tur aniq ko‘rsatilmasa, Swift o‘zi aniqlaydi:
+
+```swift
+let myItem = true  // Bool
+tlet myText = "Hello world"  // String
+```
+
+### 📆 Date (Sanalar)
+
+Swift-da sanalar bilan ishlash uchun `Date` turi mavjud:
+
+```swift
+let myDate: Date = Date()
+```
+
+📌 `Date()` – joriy sanani qaytaradi.  
+✔️ Uni vaqtni saqlash, tahlil qilish va sanalarni solishtirish uchun ishlatamiz.  
+
+### 🔢 Numbers (Raqamlar)
+
+Swift-da sonlar quyidagi turlarga bo‘linadi:
+
+```swift
+let myFirstNumber = 1        // Int (butun son)
+let mySecondNumber = 1.0     // Double (o‘nli kasr)
+let myThirdNumber: CGFloat = 1.0  // CGFloat (UI uchun)
+```
+
+✔️ `Int` – faqat butun sonlar (1, 2, 10).  
+✔️ `Double` – o‘nlik kasrli sonlar (1.5, 3.14).  
+✔️ `CGFloat` – UI elementlar o‘lchami bilan ishlash uchun.  
+
+📌 **Qoida:**  
+- `Double` – matematik hisob-kitoblar uchun ishlatiladi.  
+- `CGFloat` – UI dizayni uchun (masalan, rasm o‘lchami, shrift hajmi).  
+
+### 🎯 Xulosa
+
+Bugungi postda quyidagilarni o‘rgandik:
+
+✔️ Swiftda tur xavfsizligi qanday ishlaydi.  
+✔️ `String`, `Boolean`, `Date`, `Number` turlari qanday qo‘llaniladi.  
+✔️ Swift Playgroundda kod yozishni davom ettirish mumkin.  
+
+🔜 **Keyingi postda:** 🔥 `var` va `let` o‘rtasidagi farqni o‘rganamiz! 🚀
