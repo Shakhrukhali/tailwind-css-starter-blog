@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Dr.SwiftUI',
   author: 'ShoxruxC',
   headerTitle: 'Dr.SwiftUI',
-  description: 'yangi qo\'shilgan maqolalar',
+  description: '',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://swiftui.uz',
