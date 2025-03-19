@@ -136,7 +136,9 @@
 .csl-entry {
   @apply my-5;
 }
-
+.header {
+  @apply flex items-center sticky top-0 z-50 w-full bg-white dark:bg-gray-950 justify-between py-5;
+}
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
