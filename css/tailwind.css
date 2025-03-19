@@ -141,7 +141,7 @@
   display: none;
 }
 .prose {
-  font-size: 22px; /* yoki text-xl */
+  font-size: 20px; /* yoki text-xl */
 }
 
 .no-scrollbar {
