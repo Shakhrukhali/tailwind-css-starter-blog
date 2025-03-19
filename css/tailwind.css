@@ -140,6 +140,9 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.prose {
+  font-size: 22px; /* yoki text-xl */
+}
 
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */

@@ -81,11 +81,12 @@ module.exports = () => {
       ],
       unoptimized,
     },
-    async headers() {
+    async redirects() {
       return [
         {
-          source: '/(.*)',
-          headers: securityHeaders,
+          source: '/',
+          destination: '/blog',
+          permanent: true, // 301 Redirect
         },
       ]
     },
