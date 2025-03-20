@@ -1,0 +1,147 @@
+---
+title:Funksiyalar | Swift asoslari
+date: "2025-03-13"
+tags: ['swift']
+draft: false
+summary: "Swift dasturlash tilini o‘rganish uchun kirish darsi. Xcode o‘rnatish, Playground yaratish va asosiy tushunchalar."
+---
+O‘tgan postda barcha kod bitta katta faylda edi. Bu Playground-da o‘rganish uchun yaxshi, lekin haqiqiy ilovalarni qurishda kodni bitta faylga joylashtirmaymiz.  
+
+Buning o‘rniga, maxsus fayllar yaratib, unda funksiyalar yozamiz va kodimizdan ularni chaqiramiz. Ilova ishga tushganda, bitta funksiya kod bo‘lagini bajaradi, keyin u boshqa funksiyani chaqiradi. Butun ilova – bu funksiyalar zanjiri.  
+
+O‘tgan postda eng qiyini edi – ko‘p mantiq ko‘rdik. Bu video esa ancha osonroq bo‘ladi.  
+
+## 🔹 Biz bugun funksiyalar haqida gaplashamiz.  
+
+Shu paytgacha faqat bitta faylda kod yozdik, u yuqoridan pastga qarab bajariladi:  
+✅ 1-qator, ✅ 2-qator, ✅ 3-qator...  
+
+Ammo haqiqiy ilova shunday ishlamaydi. Ilova – fayllardagi funksiyalar ketma-ketligi.  
+
+### Yangi fayl yarating:  
+
+- 🖱 Navigator-da o‘ng tugma bosing  
+- 📄 Yangi Playground sahifasini yarating  
+- 📝 Uni `Functions` deb nomlang  
+
+```swift
+import Foundation
+```
+
+## 🔥 Funksiyalar  
+
+Hozirgacha shunday kod yozdik:  
+
+```swift
+var myItem: Bool = false
+myItem = true
+print(myItem)
+```
+
+Bu Playground uchun yaxshi, lekin haqiqiy ilovada kod funksiyalarga bo‘linadi.  
+
+### ✅ Funksiya yozish:  
+
+```swift
+func myFirstFunction() {
+    print("My first function called")
+}
+```
+
+#### 📌 Tushuncha:  
+- `func` – funksiya kalit so‘zi.  
+- `myFirstFunction` – funksiya nomi.  
+- `()` – parameterlar joyi (hozir bo‘sh).  
+- `{}` – kod bloki (if shartlaridagi kabi).  
+
+### ✅ Bu kod faqat chaqirilganda bajariladi:  
+
+```swift
+myFirstFunction()
+```
+
+#### 📢 Konsolda natija:  
+🖥 *My first function called*  
+
+## 🔄 Funksiyalar bir-birini chaqirishi mumkin  
+
+```swift
+func mySecondFunction() {
+    print("My second function called")
+}
+
+func myFirstFunction() {
+    print("My first function called")
+    mySecondFunction()
+}
+```
+
+#### 📌 Tushuncha:  
+- `myFirstFunction()` chaqirilganda, avval o‘z kodi bajariladi, keyin `mySecondFunction()` chaqiriladi.  
+
+### 🔗 Funksiyalar zanjiri:  
+
+```swift
+func myThirdFunction() {
+    print("My third function called")
+}
+
+func mySecondFunction() {
+    print("My second function called")
+    myThirdFunction()
+}
+
+func myFirstFunction() {
+    print("My first function called")
+    mySecondFunction()
+    myThirdFunction()
+}
+```
+
+### ✅ Ilova ishlash jarayoni:  
+1️⃣ `myFirstFunction()` chaqiriladi  
+2️⃣ `mySecondFunction()` ishga tushadi  
+3️⃣ `myThirdFunction()` ishlaydi  
+
+## 🔐 Funksiyalar kirishni boshqaradi  
+
+```swift
+func getUsername() {
+    let username = "Ali"
+    print(username)
+}
+
+getUsername()
+```
+
+### 🔹 E’tibor bering!  
+- `username` faqat funksiya ichida mavjud.  
+- Agar tashqarida `print(username)` desak, xato beradi.  
+
+### ✅ Agar tashqarida bo‘lsa:  
+
+```swift
+let username = "Ali"
+func getUsername() {
+    print(username)
+}
+```
+
+## 🎯 Funksiyadan ma’lumot qaytarish  
+
+```swift
+func getUsername() -> String {
+    let username = "Ali"
+    return username
+}
+
+let name = getUsername()
+```
+
+#### 📌 Tushuncha:  
+- `-> String` – funksiya `String` qaytarishini bildiradi.  
+- `return` – qiymatni qaytaradi.  
+- `name` endi `"Ali"` ga teng.  
+
+🚀 Endi siz Swift’da funksiyalar bilan ishlashni tushundingiz! Keyingi bosqichga o‘tishga tayyormisiz? 😎
+
