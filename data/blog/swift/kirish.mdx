@@ -1,0 +1,128 @@
+---
+title: 1.Kirish | Swift asoslari
+date: '2025-03-20'
+tags: ['swift']
+draft: false
+summary: 'Kirish , swift tilida Hello world.'
+---
+# Hammaga xush kelibsiz!
+
+Mening ismim Shoxrux, va bu “Dr. SwiftUI” kanali. Agar siz ushbu matnni o‘qiyotgan bo‘lsangiz, demak, siz kod yozishni o‘rganishga qaror qildingiz. Men sizga va’da beraman, bu kod yozishni o‘rganishning eng oson yo‘li bo‘ladi, yoki hech bo‘lmaganda shunday bo‘lishiga umid qilaman. Ushbu postda biz eng oddiy asoslardan boshlaymiz:
+
+- Foydalanadigan dasturiy ta’minotni ko‘rib chiqamiz (Xcode-ni yuklab olamiz).
+- Swift-da nomlash qoidalarini, ya’ni “camel case” uslubini o‘rganamiz.
+- Kodga sharhlar qo‘shishni ko‘ramiz – bu eslatma qoldirishning asosiy usuli.
+
+Bu matn sodda bo‘ladi, lekin ko‘p gapirmasdan, keling, Xcode-ni yuklab olib, kod yozishni boshlaymiz!
+
+## Kanalga xush kelibsiz!
+
+Men bu matnda siz hech qachon kod yozmagan yoki Swift bilan ishlamagan deb faraz qilaman. Shuning uchun imkon qadar sodda boshlaymiz – siz bilmaysiz deb tasavvur qilib, hamma narsani tezda o‘rganamiz. Har bir bo‘lim xronologik tartibda tuzilgan:
+
+1. Har bir qismda o‘rgangan narsamizni keyingi qismda qo‘llaymiz.
+2. Masalan, bu bo‘limda biror narsani o‘rganamiz, keyingi bo‘limda uni ishlatamiz.
+
+Maqsad – bilimlarni tez o‘zlashtirish uchun amaliy mashq qilish. Shu tariqa Swift-da kod yozish siz uchun bir tilni o‘rgangandek ravon bo‘ladi.
+
+## Xcode-ni o‘rnatish
+
+Swift-da hech narsa qilmaganimizni tasavvur qilib, birinchi qadam – kod yozish uchun dastur o‘rnatish:
+
+- Mac-da App Storeni oching.
+- “Xcode” deb qidiring.
+- Xcode – Apple tomonidan iOS ilovalari uchun ishlab chiqilgan dasturiy ta’minot. Men biladigan har bir Swift dasturchisi Xcode-da ishlaydi.
+- Yuklab oling va tayyor bo‘lgach, oching.
+
+“Swift Playgrounds” degan ilova ham bor, lekin biz Xcode-ga e’tibor qaratamiz, chunki iOS dasturchilari har kuni unda ishlaydi.
+
+## Playground yaratish
+
+Xcode-ni ochganingizda “Create a new Xcode project” oynasini ko‘rasiz. Odatda ilova yaratamiz, lekin bu matnda shunchaki Swift fayllarida kod yozmoqchiman. Shuning uchun:
+
+1. “File” → “New” → “Playground” tanlang.
+2. “Blank” turini tanlab, bo‘sh fayl yarating.
+3. Men uni “Swiftful Thinking Basics Bootcamp” deb nomladim va “Create” bosdim.
+
+Playground – bu oddiy kod yozish uchun maxsus muhit, iOS dasturchilari orasida keng tarqalgan.
+
+## Swift asoslari
+
+“Swift Basics” faylida ishlaymiz. Xcode-da:
+
+- **Navigator** (chap panel) – barcha fayllar ro‘yxati.
+- **Asosiy maydon** – bitta Swift fayli, unda kod ishlaydi.
+- **O‘ng panel** – Playground-da natijalarni ko‘rsatadi.
+
+Kod yuqoridan pastga qarab ishlaydi. “Play” tugmasini bossangiz, natijani o‘ngda ko‘rasiz.
+
+## Konsolga chop etish
+
+Konsolga chop etish uchun Swift-da `print` funksiyasidan foydalanamiz:
+
+```swift
+var greeting = "Hello playground"
+print(greeting)
+```
+
+Konsol (pastdagi kulrang panel) “Hello playground” matnini chiqaradi. Bu kodni tekshirishda juda foydali. Keyingi bo‘limlarda `var`, `greeting` va matn nimaligini tushuntiraman.
+
+## Kodga sharh yozish
+
+Sharhlar – kodni eslab qolish yoki boshqalarga tushuntirish uchun:
+
+### Bir qatorli sharh
+
+```swift
+// Bu sharh
+```
+
+Ikki oldinga chiziq (“//”) bilan yoziladi. Kod sifatida ishlamaydi, faqat eslatma uchun.
+
+### Ko‘p qatorli sharh
+
+```swift
+/*
+Bu ko‘p qatorli sharh
+Bir nechta qatorni qamrab oladi
+*/
+```
+
+“/*” bilan boshlanadi, “*/” bilan tugaydi. Sharh yozishning zarari yo‘q, aksincha, eng yaxshi Swift dasturchilari ajoyib sharhlar yozadi.
+
+## Nomlash qoidalari
+
+Swift-da nomlash uchun **camel case** ishlatiladi:
+
+```swift
+var greeting = "Hello playground"
+let firstGreeting = "Hello world"
+let thisIsMyFirstGreeting = "Hello world"
+```
+
+Birinchi so‘z kichik harf bilan, keyingi so‘zlarning birinchi harflari katta harf bilan.
+
+### Swift-da noto‘g‘ri usullar:
+
+- **Snake case**:
+  ```swift
+  let this_is_my_second_greeting = "Hello world"
+  ```
+
+- **Pascal case**:
+  ```swift
+  let ThisIsWhatPascalCaseLooksLike = "Hello world"
+  ```
+
+Swift-da faqat camel case to‘g‘ri. Boshqa usullar kodni o‘qishni qiyinlashtiradi.
+
+## Yakunlash
+
+Bu bo‘limda:
+
+- Xcode va Playground bilan tanishdik.
+- Konsolga `print` bilan chop etishni o‘rgandik.
+- Sharh yozishni (bir qatorli va ko‘p qatorli) bilib oldik.
+- Nomlash qoidalarini o‘rgandik – camel case Swift uchun to‘g‘ri.
+
+Keyingi bo‘limda `var`, qo‘shtirnoq va asosiy turlarni o‘rganamiz. Bu matn sodda boshlandi, lekin asta-sekin murakkablashib, sizni Swift bo‘yicha mutaxassis qiladi. O‘qiganingiz uchun rahmat, men Shoxrux, bu “Dr. SwiftUI”, keyingi bo‘limda ko‘rishguncha!
+
