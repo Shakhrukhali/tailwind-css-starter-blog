@@ -18,7 +18,7 @@ const siteMetadata = {
   //facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com',
-  telegram: '@DrSwiftUI',
+  telegram: 'DrSwiftUI',
   //instagram: 'https://www.instagram.com',
   //medium: 'https://medium.com',
   //bluesky: 'https://bsky.app/',
