@@ -1,0 +1,265 @@
+---
+title: 'Optional'
+date: '2025-04-16'
+tags: ['swift']
+draft: false
+summary: "Bu maqola Swift dasturlash tilidagi **optionallar** (ixtiyoriy qiymatlar) haqida to‘liq ma’lumot beradi. Optionallar Swift’da eng muhim tushunchalardan biri bo‘lib, iOS dasturchilari uchun muhim bilim hisoblanadi. Ushbu qo‘llanma optionallarni qanday ishlatish, ularni xavfsiz ochish (unwrap) va real loyihalarda qo‘llashni tushuntiradi."
+---
+# Swift Optionallar: To'liq Qo'llanma
+
+## Optionallar nima?
+
+Swift’da **optional** — bu qiymat bo‘lishi mumkin yoki bo‘lmasligi mumkin bo‘lgan ma’lumot turi. Masalan, oddiy `Boolean` faqat `true` yoki `false` qiymatlarini oladi, lekin **optional Boolean** `true`, `false` yoki `nil` (hech qanday qiymat yo‘q) qiymatlarini olishi mumkin.
+
+Optionallar quyidagi holatlarda foydalidir:
+- Ma’lumotlar hali yuklanmagan bo‘lsa.
+- Foydalanuvchi ma’lum bir maydonni to‘ldirmagan bo‘lsa.
+- API’dan kelgan ma’lumotlar yetishmasa.
+
+Swift’da optional qiymatlar `?` belgisi bilan belgilanadi. Masalan:
+
+```swift
+var myBool: Bool = false        // Har doim true yoki false
+var myOptionalBool: Bool? = nil // true, false yoki nil
+```
+
+## Optionallarni ochish (Unwrapping)
+
+Optionallarni ishlatishda eng muhim narsa — ularni **xavfsiz ochish** (safely unwrap). Agar optional noto‘g‘ri ochilsa, dastur xatolik bilan yopilishi (crash) mumkin. Swift’da optionallarni ochishning uchta xavfsiz usuli mavjud:
+
+1. **Nil Coalescing Operator (`??`)**
+2. **If-Let Statement**
+3. **Guard Statement**
+
+Bundan tashqari, xavfli usul sifatida **explicit unwrapping** (`!`) ham mavjud, lekin undan foydalanish tavsiya etilmaydi.
+
+### 1. Nil Coalescing Operator (`??`)
+
+**Nil Coalescing Operator** optional qiymat `nil` bo‘lsa, standart (default) qiymatni qaytaradi. Bu operator `??` belgisi bilan ishlaydi.
+
+Masalan:
+
+```swift
+var myOptionalBool: Bool? = nil
+let newValue = myOptionalBool ?? false
+
+print("newValue: \(newValue)") // Natija: newValue: false
+```
+
+Yuqoridagi kodda `myOptionalBool` qiymati `nil` bo‘lgani uchun `newValue` ga `false` standart qiymati beriladi. Agar `myOptionalBool` `true` bo‘lsa, u holda `true` ishlatiladi:
+
+```swift
+myOptionalBool = true
+let newValue = myOptionalBool ?? false
+print("newValue: \(newValue)") // Natija: newValue: true
+```
+
+Bu usul har qanday turdagi optional uchun ishlaydi, masalan, `String` yoki `Int`:
+
+```swift
+var myOptionalString: String? = "Hello, World!"
+let newString = myOptionalString ?? "No value"
+print(newString) // Natija: Hello, World!
+
+myOptionalString = nil
+print(myOptionalString ?? "No value") // Natija: No value
+```
+
+### 2. If-Let Statement
+
+**If-Let** optional qiymat mavjud bo‘lsa, uni yangi konstantaga (yoki o‘zgaruvchiga) o‘tkazadi va ushbu qiymatni blok ichida ishlatish imkonini beradi.
+
+Masalan:
+
+```swift
+var userIsPremium: Bool? = nil
+
+func checkIfUserIsPremium() -> Bool {
+    if let isPremium = userIsPremium {
+        return isPremium // isPremium non-optional Bool
+    } else {
+        return false // Agar nil bo‘lsa, false qaytariladi
+    }
+}
+```
+
+Yuqoridagi funktsiyada `userIsPremium` qiymati mavjud bo‘lsa, `isPremium` konstantasi yaratiladi va u non-optional `Bool` sifatida ishlatiladi. Agar `nil` bo‘lsa, `else` bloki ishlaydi.
+
+Swift’ning yangi sintaksisida `if let` da yangi nom yaratish shart emas:
+
+```swift
+func checkIfUserIsPremium() -> Bool {
+    if let userIsPremium {
+        return userIsPremium // userIsPremium non-optional
+    }
+    return false
+}
+```
+
+Bu yerda `userIsPremium` nomi saqlanib qoladi, lekin optional emas, balki oddiy `Bool` sifatida ishlatiladi.
+
+#### Murakkab If-Let
+
+Bir nechta optional qiymatlarni bir vaqtning o‘zida ochish uchun `if let` ni zanjir (chain) shaklida ishlatish mumkin:
+
+```swift
+var userIsNew: Bool? = true
+var userDidCompleteOnboarding: Bool? = false
+var userFavoriteMovie: String? = nil
+
+func checkIfUserIsSetup() -> Bool {
+    if let userIsNew, let userDidCompleteOnboarding, let userFavoriteMovie {
+        return getUserStatus(userIsNew: userIsNew, userDidCompleteOnboarding: userDidCompleteOnboarding, userFavoriteMovie: userFavoriteMovie)
+    }
+    return false
+}
+
+func getUserStatus(userIsNew: Bool, userDidCompleteOnboarding: Bool, userFavoriteMovie: String) -> Bool {
+    if userIsNew && userDidCompleteOnboarding {
+        return true
+    }
+    return false
+}
+```
+
+Bu kodda uchta optional qiymat bir vaqtning o‘zida ochiladi. Agar ulardan biri `nil` bo‘lsa, `else` bloki ishlaydi.
+
+### 3. Guard Statement
+
+**Guard** statement `if let` ga o‘xshaydi, lekin u muvaffaqiyatsizlik holatida (ya’ni `nil` bo‘lsa) funktsiyadan chiqishga majbur qiladi. Bu kodni yanada sodda va o‘qilishi oson qiladi.
+
+Masalan:
+
+```swift
+func checkIfUserIsPremium() -> Bool {
+    guard let isPremium = userIsPremium else {
+        return false // Agar nil bo‘lsa, darhol false qaytariladi
+    }
+    return isPremium // isPremium non-optional Bool
+}
+```
+
+`Guard` muvaffaqiyatli bo‘lsa, optional qiymat ochiladi va funktsiya ichida non-optional sifatida ishlatiladi. Yangi sintaksisda:
+
+```swift
+func checkIfUserIsPremium() -> Bool {
+    guard let userIsPremium else {
+        return false
+    }
+    return userIsPremium
+}
+```
+
+#### Murakkab Guard
+
+Bir nechta optional qiymatlarni ochish uchun `guard` ham zanjir shaklida ishlatilishi mumkin:
+
+```swift
+func checkIfUserIsSetup() -> Bool {
+    guard let userIsNew, let userDidCompleteOnboarding, let userFavoriteMovie else {
+        return false
+    }
+    return getUserStatus(userIsNew: userIsNew, userDidCompleteOnboarding: userDidCompleteOnboarding, userFavoriteMovie: userFavoriteMovie)
+}
+```
+
+Bu kod `if let` bilan yozilgan versiyaga o‘xshaydi, lekin `guard` foydalanish tufayli kod yanada sodda va aniqroq ko‘rinadi.
+
+#### Guard vs If-Let
+
+- **If-Let**: Muvaffaqiyatli bo‘lsa, blok ichiga kiradi. Murakkab kodlarda bir nechta ichki bloklar (nested closures) yuzaga kelishi mumkin.
+- **Guard**: Muvaffaqiyatsiz bo‘lsa, blok ichiga kiradi va funktsiyadan chiqadi. Bu kodni soddalashtiradi va ichki bloklarni kamaytiradi.
+
+Masalan, murakkab `if let` kodi:
+
+```swift
+func checkIfUserIsSetup() -> Bool {
+    if let userIsNew {
+        if let userDidCompleteOnboarding {
+            if let userFavoriteMovie {
+                return getUserStatus(userIsNew: userIsNew, userDidCompleteOnboarding: userDidCompleteOnboarding, userFavoriteMovie: userFavoriteMovie)
+            }
+            return false
+        }
+        return false
+    }
+    return false
+}
+```
+
+Yuqoridagi kodda har bir optional uchun yangi blok ochiladi, bu esa kodni murakkablashtiradi. `Guard` bilan yozilgan versiya esa:
+
+```swift
+func checkIfUserIsSetup() -> Bool {
+    guard let userIsNew else { return false }
+    guard let userDidCompleteOnboarding else { return false }
+    guard let userFavoriteMovie else { return false }
+    return getUserStatus(userIsNew: userIsNew, userDidCompleteOnboarding: userDidCompleteOnboarding, userFavoriteMovie: userFavoriteMovie)
+}
+```
+
+Bu kod ancha sodda va o‘qilishi oson. Shuning uchun, agar imkon bo‘lsa, `guard` ni afzal ko‘rish tavsiya etiladi.
+
+## Optional Chaining
+
+**Optional Chaining** Swift’da optional qiymatlarga xavfsiz kirish imkonini beradi. Agar qiymat `nil` bo‘lsa, operatsiya bajarilmaydi va `nil` qaytariladi.
+
+Masalan:
+
+```swift
+func getUsername() -> String? {
+    return "test"
+}
+
+func getUserData() {
+    let username = getUsername()
+    let characterCount = username?.count // Optional Int
+    print(characterCount ?? 0) // Agar nil bo‘lsa, 0
+}
+```
+
+Yuqoridagi kodda `username?.count` faqat `username` `nil` bo‘lmasa ishlaydi. Agar `nil` bo‘lsa, `characterCount` ham `nil` bo‘ladi.
+
+Bir nechta optionalni zanjir sifatida ishlatish:
+
+```swift
+let isFirstCharacterLowercased = username?.first?.isLowercased ?? false
+```
+
+Bu kodda:
+1. `username` `nil` emasligi tekshiriladi.
+2. `username` da birinchi harf borligi tekshiriladi.
+3. Birinchi harf kichik harf ekanligi tekshiriladi.
+
+Agar zanjirdagi har qanday qism `nil` bo‘lsa, natija `false` bo‘ladi.
+
+## Xavfli Ochish (Explicit Unwrapping)
+
+Optional qiymatni `!` belgisi bilan majburiy ochish mumkin, lekin bu xavfli hisoblanadi. Agar qiymat `nil` bo‘lsa, dastur xatolik bilan yopiladi.
+
+Masalan:
+
+```swift
+let username: String? = nil
+let characterCount = username!.count // Crash! username nil
+```
+
+**Tavsiya**: `!` belgisidan faqat 100% qiymat `nil` emasligiga ishonchingiz komil bo‘lsa foydalaning. Aks holda, xavfsiz usullardan foydalanish yaxshiroq.
+
+## Xulosa
+
+Optionallar Swift dasturlash tilining asosiy qismidir va ularni to‘g‘ri ishlatish iOS dasturchisi sifatida muvaffaqiyatga erishish uchun juda muhimdir. Optionallarni xavfsiz ochishning uchta usuli:
+
+1. **Nil Coalescing (`??`)**: Standart qiymat bilan ochish.
+2. **If-Let**: Optional qiymatni blok ichida ochish.
+3. **Guard**: Muvaffaqiyatsizlik holatida funktsiyadan chiqish.
+
+`Guard` odatda `if let` ga nisbatan afzalroq, chunki u kodni soddalashtiradi. Optional chaining esa bir nechta optional qiymatlarga xavfsiz kirish imkonini beradi. Xavfli ochish (`!`) dan imkon qadar qochish kerak, chunki bu dastur xatoliklariga olib kelishi mumkin.
+
+Agar iOS intervyusiga tayyorgarlik ko‘rayotgan bo‘lsangiz, optionallar va ularni ochish usullari haqida chuqur bilimga ega bo‘lishingiz zarur. Bu bilim sizni boshqa nomzodlardan ajratib turadi!
+
+---
+
+**Muallif**: Nick (Swiftful Thinfjking)  
+**Tarjima**: [Sizning ismingiz]  
+**Sanasi**: 16-aprel, 2025
